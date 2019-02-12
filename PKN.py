@@ -126,26 +126,6 @@ def openDb():
     for x in lPk:
         listTablesPK.insert('end',x)
         
-def addPK():
-
-    try:
-        # conn.commit()
-        # cursor = conn.cursor()
-        tablename = listTables.get(listTables.curselection())
-        cursor.execute('ALTER TABLE '+tablename+' ADD ID LONG INTEGER')
-        conn.commit()
-        cursor.execute('ALTER TABLE '+tablename +
-                       ' ADD CONSTRAINT PK_ID PRIMARY KEY(ID)')
-        conn.commit()
-        cursor.execute('ALTER TABLE '+tablename +
-                       ' ALTER COLUMN ID COUNTER')
-        conn.commit()
-        #print(listTables.get(listTables.curselection()))
-    except Exception as e:
-        # print(dblocation)
-        print(e)
-        messagebox.showwarning(
-            'Error', "Please select a table from 'Tables without PK'!")
 
 
 def refreshTables():
